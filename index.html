@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Peta</title>
+    <!-- Memuat Tailwind CSS untuk styling cepat -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Memuat Font Awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Memuat Leaflet CSS untuk peta -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Menghubungkan ke file CSS eksternal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Kontainer utama aplikasi -->
+    <div class="weather-card w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-lg text-white">
+        <h1 class="text-3xl font-bold text-center mb-6">Aplikasi Peta</h1>
+       
+        <!-- Bagian Pencarian -->
+        <div class="flex mb-6 shadow-md rounded-lg">
+            <input type="text" id="locationInput" class="w-full bg-white/20 text-white custom-placeholder px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-shadow" placeholder="Masukkan nama lokasi...">
+            <button id="searchBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-5 py-3 rounded-r-lg transition-colors">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <!-- Bagian Tampilan Peta (awalnya tersembunyi) -->
+        <div id="mapInfo" class="text-center hidden">
+            <h2 id="locationName" class="text-4xl font-semibold">Nama Lokasi</h2>
+            
+            <!-- Peta Container -->
+            <div id="map" class="mx-auto my-4 w-24 h-24 rounded-full overflow-hidden shadow-lg"></div>
+            
+            <p id="coordinates" class="text-2xl font-bold mt-2">--°, --°</p>
+            <p id="country" class="text-xl capitalize mt-2">Negara</p>
+           
+            <div class="flex justify-around mt-6 text-lg bg-white/10 p-4 rounded-lg">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                    <div>
+                        <p id="lat" class="font-bold">--°</p>
+                        <p class="text-sm">Lintang</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-compass fa-lg"></i>
+                    <div>
+                        <p id="lng" class="font-bold">--°</p>
+                        <p class="text-sm">Bujur</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <!-- Pesan Error (awalnya tersembunyi) -->
+        <div id="errorMessage" class="text-center bg-red-500/50 p-3 rounded-lg mt-4 hidden">
+            <p>Lokasi tidak ditemukan. Silakan coba lagi.</p>
+        </div>
+
+         <!-- Pesan Awal -->
+        <div id="initialMessage" class="text-center text-gray-200 mt-8">
+            <p>Masukkan nama lokasi untuk melihat peta saat ini.</p>
+        </div>
+    </div>
+
+    <!-- Memuat Leaflet JS untuk peta -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Menghubungkan ke file JavaScript eksternal -->
+    <script src="script.js"></script>
+</body>
+</html>
